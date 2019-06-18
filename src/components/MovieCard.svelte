@@ -4,15 +4,13 @@
 
 <style>
     .movie-card {
-        width: 20rem;
-        height: 10rem;
-
-        padding: 1.2rem;
+        width: 18rem;
+        height: 25rem;
 
         position: relative;
 
         border-radius: 0.5rem;
-        background: no-repeat center;
+        background: teal no-repeat center;
         background-size: cover;
     }
 
@@ -20,7 +18,12 @@
         width: 100%;
         height: 100%;
 
-        background-color: rgba(var(--main-dark), 0.5);
+        padding: 1.2rem;
+
+        display: flex;
+        align-items: flex-end;
+
+        background-color: rgba(0, 0, 0, 0.5);
     }
 </style>
 

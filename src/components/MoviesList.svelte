@@ -10,8 +10,12 @@
         flex-wrap: wrap;
     }
 
-    .movies-list__item {
-        margin: 0 1rem 1.5rem 1rem;
+    .movies-list__item:last-child {
+        margin: 0 0 2rem;
+    }
+
+    .movies-list__item:not(:last-child) {
+        margin: 0 1.5rem 2rem 0;
     }
 </style>
 

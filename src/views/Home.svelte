@@ -1,8 +1,8 @@
 <script>
-    import { beforeUpdate, afterUpdate } from 'svelte'
     import debounce from 'debounce'
     import api from '../api'
 
+    import Container from '../components/Container.svelte'
     import SearchInput from '../components/SearchInput.svelte'
     import EmptyState from '../components/EmptyState.svelte'
     import MoviesList from '../components/MoviesList.svelte'
@@ -21,9 +21,7 @@
                 const response = await api.get(`?s=${query}`)
                 movies = response.Search
                 isEmpty = false
-                console.log('Success: ', movies)
             } catch(error) {
-                console.log('Error: ', error)
                 isEmpty = true
             }
 
@@ -44,7 +42,7 @@
     }
 </style>
 
-<div class="container">
+<Container>
     <div class="home">
         <div>
             <SearchInput bind:query={query} />
@@ -56,4 +54,4 @@
             <MoviesList movies={movies} />
         {/if}
     </div>
-</div>
+</Container>

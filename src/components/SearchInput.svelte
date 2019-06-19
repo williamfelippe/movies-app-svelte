@@ -7,7 +7,6 @@
         width: 100%;
 
         padding: 1.2rem 1.2rem 1.2rem 1.6rem;
-        margin: 5rem 0;
 
         background-color: white;
         border-radius: 0.5rem;

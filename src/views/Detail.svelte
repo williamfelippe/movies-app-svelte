@@ -3,9 +3,11 @@
     import api from '../api'
 
     import Container from '../components/Container.svelte'
+    import Loader from '../components/Loader.svelte'
 
     export let router = {}
     let movie = null
+    let hasError = false
 
     onMount(() => {
         fetchMovieByImdbId()
@@ -14,22 +16,49 @@
     const fetchMovieByImdbId = async () => {
         try {
             const { movieId } = router.params
-            const movie = await api.get(`?i=${movieId}`)
-            console.log('Movie: ', movie)
-        } catch(error) {
-            console.log('Error: ', error)
+            movie = await api.get(`?i=${movieId}`)
+            hasError = false
+        } catch (error) {
+            hasError = true
         }
     }
 </script>
 
-{#if movie}
+<style>
+    .title {
+        font-size: 4rem;
+        font-weight: 700;
+    }
+
+    .detail {
+        display: flex;
+    }
+
+    .detail__content {
+        flex: 1;
+    }
+
+    .poster {
+        max-width: 100%;
+        width: auto;
+        height: 70rem;
+
+        border-radius: 1rem;
+    }
+</style>
+
+{#if hasError}
+    <p>It was not possible to get movie information</p>
+{:else if movie}
     <Container>
-        <div>
-            <div>
-                <h1>{movie.Title}</h1>
+        <div class="detail">
+            <div class="detail__content">
+                <h1 class="title">
+                    {movie.Title}
+                </h1>
             </div>
-            <div>
-                <img src={movie.Poster} alt="" />
+            <div class="detail__content">
+                <img src={movie.Poster} alt="" class="poster" />
             </div>
         </div>
     </Container>

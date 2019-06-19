@@ -7,6 +7,8 @@
     import EmptyState from '../components/EmptyState.svelte'
     import MoviesList from '../components/MoviesList.svelte'
 
+    import WhatsInLogo from '../assets/images/logos/logo.svg'
+
     let query = ''
     let isEmpty = true
     let movies = []
@@ -15,8 +17,6 @@
 
     const fetchSearch = debounce(async (query) => {
         if(query) {
-            console.log('Agora sim: ', query)
-
             try {
                 const response = await api.get(`?s=${query}`)
                 movies = response.Search
@@ -40,11 +40,26 @@
         display: flex;
         flex-direction: column;
     }
+
+    .logo {
+        width: 100%;
+        max-width: 10rem;
+
+        margin: 5rem 0 2rem;
+    }
+
+    .search {
+        margin-bottom: 2rem;
+    }
 </style>
 
 <Container>
     <div class="home">
         <div>
+            <img src={WhatsInLogo} alt="" class="logo" />
+        </div>
+
+        <div class="search">
             <SearchInput bind:query={query} />
         </div>
 

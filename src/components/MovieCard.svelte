@@ -10,7 +10,7 @@
         height: 25rem;
 
         position: relative;
-        overflow-y: hidden;
+        overflow: hidden;
 
         border-radius: 0.5rem;
         background: teal no-repeat center;
@@ -28,13 +28,13 @@
 
         background-color: rgba(0, 0, 0, 0.7);
 
-        transform: translate(100%);
-        transition: all ease-out 0.2s;
+        transform: translateY(100%);
+        transition: all ease-out 0.15s;
     }
 
-    .movie-card__foreground:hover {
-        transform: translate(0);
-        transition: all ease-in 0.2s;
+    .movie-card:hover .movie-card__foreground {
+        transform: translateY(0);
+        transition: all ease-in 0.15s;
     }
 
     .movie-card__info {
@@ -51,7 +51,7 @@
     }
 </style>
 
-<Link href={`detail/${movie.imdbID}`}>
+<Link href={`/detail/${movie.imdbID}`}>
     <div class="movie-card" style={`background-image: url(${movie.Poster})`}>
         <div class="movie-card__foreground">
             <div class="movie-card__info">
